@@ -1,0 +1,448 @@
+{% extends '::baseFront.html.twig' %}
+{% block title %} Contactez-nous {{ parent() }} {% endblock %}
+{% block css %}
+    {{ parent() }}
+    <style>
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 9999; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0); /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Modal Body */
+        .modal-body {
+            padding: 2px 16px;
+            margin-top: 25px;
+
+        }
+
+        .modal-body p {
+            text-align: center;
+        }
+
+        /* Modal Content */
+        .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            padding: 0;
+            border: 1px solid #888;
+            width: 80%;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.4s;
+            animation-name: animatetop;
+            padding-bottom: 20px;
+            animation-duration: 0.4s
+        }
+
+        .modal-content .modal-header {
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .modal-header {
+            border-bottom: 2px solid #eaeaea;
+            padding: 15px;
+
+        }
+
+        .modal-header h2 {
+            font-size: 2.5em;
+        }
+
+        /* Add Animation */
+        @-webkit-keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0
+            }
+            to {
+                top: 300px;
+                opacity: 1
+            }
+        }
+
+        @keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0
+            }
+            to {
+                top: 300px;
+                opacity: 1
+            }
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    <!--=============== wrapper ===============-->
+    <div id="wrapper">
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2 id="headModal">Envoi des données en cours</h2>
+                </div>
+                <div class="modal-body">
+                    <p id="bodyModal">Veuillez patienter un instant pendant l'envoi</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- content-holder  -->
+        <div class="content-holder">
+            <!-- Page title -->
+            <div class="dynamic-title">Contactez-nous</div>
+            <!-- Page title  end-->
+            <!-- content  -->
+            <div class="content hor-content  pad-con no-bg-con">
+                <section id="sec1">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h2 class="section-title">Comment <strong>nous trouver </strong></h2>
+                            </div>
+                            <div class="map-box">
+                                <div id="map-canvas"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="content dark-bg">
+                <section>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="contact-details">
+                                    <div class="row">
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <h2 class="section-title"> &nbsp;&nbsp;Adresse /
+                                                    <strong>contact </strong></h2>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <h3 class="bold-title"></h3>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <h4>Siège social</h4>
+                                            <ul>
+                                                <li>Angle rue Lac Toba et rue Lac Malaren,
+                                                    Imm. Mezghanni Appt 3, Etg 2,
+                                                    1053 les Berges du Lac
+                                                </li>
+                                                <li>&nbsp;</li>
+                                                <li>Tél: (+216)71 965 291</li>
+                                                <li>Fax: (+216)71 965 378</li>
+                                                <li>Mail: contact@awa.com.tn</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <h4>Trouvez-nous sur : </h4>
+                                            <ul>
+                                                <li><a style="color: #fff" href="#">Facebook</a></li>
+                                                <li><a style="color: #fff" href="#">Google plus</a></li>
+                                                <li><a style="color: #fff" href="#">Linkedin </a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="content">
+                <section>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h2 class="section-title">Formulaire de <strong>contact </strong></h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <!-- contact form -->
+                                <div class="contact-form-holder">
+                                    <div id="contact-form">
+                                        <div id="message"> {{ message|raw }}</div>
+                                        <form method="post" action="{{ path('contact_send') }}" name="contactform"
+                                              id="contactform" novalidate>
+                                            <div>
+                                                <label style="float: left; color: #999; font-size: 14px; font-weight: 700"
+                                                       for="title"> Objet </label>
+                                                <input style=" color: #000;" title="title" name="title" type="text"
+                                                       id="name"
+                                                       onClick="this.select()"/>
+                                            </div>
+                                            <span style="color: red;font-size: 11px;float: left;width: 100%" class="errortitle"></span>
+                                            <div>
+                                                <label style="float: left; color: #999; font-size: 14px; font-weight: 700"
+                                                       for="email"> Adresse email </label>
+                                                <input style=" color: #000;" title="email" name="email" type="text"
+                                                       id="email"
+                                                       onClick="this.select()"/>
+                                            </div>
+                                            <span style="color: red;font-size: 11px;float: left;width: 100%" class="erroremail"></span>
+                                            <div>
+                                                <label style="float: left; color: #999; font-size: 14px; font-weight: 700"
+                                                       for="message"> Votre message </label>
+                                                <textarea style=" color: #000; font-size: 13px" title="message"
+                                                          name="message" id="comments"
+                                                          onClick="this.select()"></textarea>
+
+                                            </div>
+                                            <span style="color: red;font-size: 11px;float: left;width: 100%"  class="errorcomments"></span>
+                                            <a id="submit" onclick="send()"
+                                               data-top-bottom="transform: translateY(-50px);"
+                                               data-bottom-top="transform: translateY(50px);">
+                                                <span>Envoyer </span>
+                                            </a>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- contact form  end-->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- content end-->
+            <!-- content footer-->
+            {% block footer %}
+                {{ parent() }}
+            {% endblock %}
+            <!-- content footer end -->
+        </div>
+        <!-- content-holder  end-->
+    </div>
+    <!-- wrapper end -->
+{% endblock %}
+{% block js %}
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBK8ckSg8MXqpU9fQoZG_yoMnLb1zPmWM"
+            type="text/javascript"></script>
+    {{ parent() }}
+    {% javascripts output="js/compiled/map.js"
+    'bundles/awapartners/frontAssets/js/map.js'
+    'bundles/awapartners/frontAssets/ajax-form/jquery.form.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script>
+        function validateEmail(email) {
+            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
+
+
+        function send() {
+            if ($('#name').val() === ''){
+                $('.errortitle').html('Champ obligatoire');
+                $('#name').css("border-color", "red");
+            }
+            else{
+                $('.errortitle').html('');
+                $('#name').css("border-color", "green");
+            }
+            if ($('#email').val() === ''){
+                $('.erroremail').html('Champ obligatoire');
+                $('#email').css("border-color", "red");
+            }
+            else if(! validateEmail($('#email').val())){
+                $('.erroremail').html('Email non valide');
+                $('#email').css("border-color", "red");
+            }
+            else{
+                $('.erroremail').html('');
+                $('#email').css("border-color", "green");
+            }
+
+            if ($('.errortitle').val() === '' && $('.erroremail').val() === '' && validateEmail($('#email').val())) {
+                var modal = document.getElementById('myModal');
+                var span = document.getElementsByClassName("close")[0];
+                var headmodal = $('#headModal');
+                var bodymodal = $('#bodyModal');
+                headmodal.html('');
+                headmodal.append("Envoi des données en cours");
+                bodymodal.html('');
+                bodymodal.append("Veuillez patientez un instant pendant l'envoi");
+                modal.style.display = "block";
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function (event) {
+                    if (event.target === modal) {
+                        modal.style.display = "none";
+                    }
+                };
+                $('#contactform').ajaxForm({
+                    success: function () {
+                        modal.style.display = "none";
+                        headmodal.html('');
+                        headmodal.append('Succès');
+                        bodymodal.html('');
+                        bodymodal.append("<p style='color: green'>Votre message a été envoyé avec succès. </p>");
+                        modal.style.display = "block";
+                        // When the user clicks on <span> (x), close the modal
+                        span.onclick = function () {
+                            modal.style.display = "none";
+                        }
+                    },
+                    error: function () {
+                        modal.style.display = "none";
+                        headmodal.html('');
+                        headmodal.append('Erreur');
+                        bodymodal.html('');
+                        bodymodal.append("<p style='color: red'>Erreur lors de l\'envoi du message, veuillez réessayer ultérieurement.</p>");
+                        modal.style.display = "block";
+                        // When the user clicks on <span> (x), close the modal
+                        span.onclick = function () {
+                            modal.style.display = "none";
+                        }
+                    }
+                }).submit();
+            }
+        }
+
+        $("#map-canvas").gmap3({
+            action: "init",
+            marker: {
+                values: [{
+                    latLng: [36.835286, 10.229767],
+                    data: "AWA Partners  - Les berges du lac",
+                    {#options: {#}
+                    {#icon: "{{ asset('bundles/awapartners/frontAssets/images/marker.png') }}"#}
+                    {#}#}
+                }],
+                options: {
+                    draggable: false
+                },
+                events: {
+                    mouseover: function (a, b, c) {
+                        var d = $(this).gmap3("get"), e = $(this).gmap3({
+                            get: {
+                                name: "infowindow"
+                            }
+                        });
+                        if (e) {
+                            e.open(d, a);
+                            e.setContent(c.data);
+                        } else $(this).gmap3({
+                            infowindow: {
+                                anchor: a,
+                                options: {
+                                    content: c.data
+                                }
+                            }
+                        });
+                    },
+                    mouseout: function () {
+                        var a = $(this).gmap3({
+                            get: {
+                                name: "infowindow"
+                            }
+                        });
+                        if (a) a.close();
+                    }
+                }
+            },
+            map: {
+                options: {
+                    zoom: 15,
+                    zoomControl: true,
+                    mapTypeControl: true,
+                    scaleControl: true,
+                    scrollwheel: false,
+                    streetViewControl: true,
+                    draggable: true,
+                    styles: [{
+                        "featureType": "water",
+                        "elementType": "geometry",
+                        "stylers": [{"color": "#e9e9e9"}, {"lightness": 17}]
+                    }, {
+                        "featureType": "landscape",
+                        "elementType": "geometry",
+                        "stylers": [{"color": "#f5f5f5"}, {"lightness": 20}]
+                    }, {
+                        "featureType": "road.highway",
+                        "elementType": "geometry.fill",
+                        "stylers": [{"color": "#ffffff"}, {"lightness": 17}]
+                    }, {
+                        "featureType": "road.highway",
+                        "elementType": "geometry.stroke",
+                        "stylers": [{"color": "#ffffff"}, {"lightness": 29}, {"weight": 0.2}]
+                    }, {
+                        "featureType": "road.arterial",
+                        "elementType": "geometry",
+                        "stylers": [{"color": "#ffffff"}, {"lightness": 18}]
+                    }, {
+                        "featureType": "road.local",
+                        "elementType": "geometry",
+                        "stylers": [{"color": "#ffffff"}, {"lightness": 16}]
+                    }, {
+                        "featureType": "poi",
+                        "elementType": "geometry",
+                        "stylers": [{"color": "#f5f5f5"}, {"lightness": 21}]
+                    }, {
+                        "featureType": "poi.park",
+                        "elementType": "geometry",
+                        "stylers": [{"color": "#dedede"}, {"lightness": 21}]
+                    }, {
+                        "elementType": "labels.text.stroke",
+                        "stylers": [{"visibility": "on"}, {"color": "#ffffff"}, {"lightness": 16}]
+                    }, {
+                        "elementType": "labels.text.fill",
+                        "stylers": [{"saturation": 36}, {"color": "#333333"}, {"lightness": 40}]
+                    }, {"elementType": "labels.icon", "stylers": [{"visibility": "off"}]}, {
+                        "featureType": "transit",
+                        "elementType": "geometry",
+                        "stylers": [{"color": "#f2f2f2"}, {"lightness": 19}]
+                    }, {
+                        "featureType": "administrative",
+                        "elementType": "geometry.fill",
+                        "stylers": [{"color": "#fefefe"}, {"lightness": 20}]
+                    }, {
+                        "featureType": "administrative",
+                        "elementType": "geometry.stroke",
+                        "stylers": [{"color": "#fefefe"}, {"lightness": 17}, {"weight": 1.2}]
+                    }]
+                }
+            }
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,457 @@
+{% extends '::baseFront.html.twig' %}
+{% block title %} Candidature {{ parent() }} {% endblock %}
+{% block css %}
+    {{ parent() }}
+    {% stylesheets output="css/compiled/fileStylecss.css" filter="cssrewrite"
+    'bundles/awapartners/frontAssets/filestyle/jquery-filestyle.min.css' %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+    <style>
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 9999; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0); /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Modal Body */
+        .modal-body {
+            padding: 2px 16px;
+            margin-top: 25px;
+            margin-bottom: 50px;
+
+        }
+
+        .modal-body p {
+            text-align: center;
+        }
+
+        /* Modal Content */
+        .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            padding: 0;
+            border: 1px solid #888;
+            width: 80%;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.4s;
+            animation-name: animatetop;
+            padding-bottom: 20px;
+            animation-duration: 0.4s
+        }
+
+        .modal-content .modal-header {
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .modal-header {
+            border-bottom: 2px solid #eaeaea;
+            padding: 15px;
+
+        }
+
+        .modal-footer {
+            border-top: 2px solid #eaeaea;
+            padding: 15px;
+            margin-bottom: 25px;
+
+        }
+
+        .modal-footer a {
+
+            float: right;
+
+        }
+
+        .modal-header h2 {
+            font-size: 2.5em;
+        }
+
+        /* Add Animation */
+        @-webkit-keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0
+            }
+            to {
+                top: 300px;
+                opacity: 1
+            }
+        }
+
+        @keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0
+            }
+            to {
+                top: 300px;
+                opacity: 1
+            }
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    <!--=============== wrapper ===============-->
+    <div id="wrapper">
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2 id="headModal">Envoi des données en cours</h2>
+                </div>
+                <div class="modal-body">
+                    <p id="bodyModal">Veuillez patientez un instant pendant l'envoi</p>
+                </div>
+                <div class="modal-footer" id="foo">
+                    <div id="footerModal">
+                        <button id="submit" onclick="yesSend()" style="float: right;">Oui, continuer</button>
+                        <button id="submit" class="annuler" onclick="close()"
+                                style="float: right;position: relative; margin-right: 15px">Annuler
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- content-holder  -->
+        <div class="content-holder">
+            <!-- Page title -->
+            <div class="dynamic-title">Carrière</div>
+            <!-- content  -->
+            <div class="content hor-content  pad-con no-bg-con">
+                <section>
+                    <!--  container  -->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <!-- single slider  -->
+                                <div class="parallax-box slider-box ">
+                                    <div class="single-slider-holder">
+                                        <div class="single-slider">
+                                            <div class="item">
+                                                <img src="{{ asset('bundles/awapartners/frontAssets/images/application.jpg') }}"
+                                                     alt="slider">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- single slider  end -->
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <h2 class="section-title">Déposez votre<strong> candidature</strong></h2>
+                                <!-- application form -->
+                                <div class="contact-form-holder">
+                                    <div id="contact-form">
+                                        <div id="response"></div>
+                                        {{ form_start(form, {'attr': {'id': 'contactform','action': path('application_new')}} ) }}
+
+                                        <div>
+                                            <label style="float: left; color: #999; font-size: 14px; font-weight: 700"
+                                                   for="title"> Nom & prénom </label>
+                                            {{ form_widget(form.fullName, {'attr':{' onClick': 'this.select()','style': 'color: #000;'}}) }}
+                                        </div>
+                                        <span style="color: red;font-size: 11px;float: left;width: 100%"
+                                              class="errorfullName">{{ form_errors(form.fullName) }}</span>
+
+
+                                        <div>
+                                            <label style="float: left; color: #999; font-size: 14px; font-weight: 700"
+                                                   for="title"> Email </label>
+                                            {{ form_widget(form.email, {'attr':{' onClick': 'this.select()','style': 'color: #000;'}}) }}
+                                        </div>
+                                        <span style="color: red;font-size: 11px;float: left;width: 100%"
+                                              class="erroremail">{{ form_errors(form.email) }}</span>
+
+                                        <div>
+                                            <label style="float: left; color: #999; font-size: 14px; font-weight: 700; padding-bottom: 15px; padding-top: 20px"
+                                                   for="title"> Type de demande </label>
+                                            {{ form_widget(form.requestType) }}
+                                        </div>
+
+                                        <span style="color: red;font-size: 11px;float: left;width: 100%"
+                                              class="errorrequestType">{{ form_errors(form.requestType) }}</span>
+
+
+                                        <div>
+                                            <label style="float: left; color: #999; font-size: 14px; font-weight: 700; padding-bottom: 15px; padding-top: 20px"
+                                                   for="title"> Type de candidature </label>
+                                            {{ form_widget(form.applicationType) }}
+                                        </div>
+
+                                        <span style="color: red;font-size: 11px;float: left;width: 100%"
+                                              class="errorapplicationType">{{ form_errors(form.applicationType) }}</span>
+
+
+                                        <div>
+                                            <div class="reference">
+                                                <label style="float: left; color: #999; font-size: 14px; font-weight: 700; padding-top: 20px"
+                                                       for="title"> Réference de l'offre </label>
+                                                {{ form_widget(form.referenceOffre, {'attr':{'onClick': 'this.select()','style': 'color: #000;'}}) }}
+                                                <span style="color: red;font-size: 11px;float: left;width: 100%"
+                                                      class="errorreferenceOffre">{{ form_errors(form.referenceOffre) }}</span>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <label style="float: left; color: #999; font-size: 14px; font-weight: 700; padding-bottom: 15px; padding-top: 20px"
+                                                   for="skills"> Cométences particulières </label>
+                                            {{ form_widget(form.skills) }}
+                                        </div>
+
+                                        <span style="color: red;font-size: 11px;float: left;width: 100%"
+                                              class="errorskills">{{ form_errors(form.skills) }}</span>
+
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <label style="float: left; color: #999; font-size: 14px; font-weight: 700; padding-top: 20px"
+                                                           for="title"> CV </label></td>
+                                                <td>
+                                                    <div style="width: 200px;"> {{ form_widget(form.cvFile) }}</div>
+                                                    {{ form_errors(form.cvFile) }}
+                                                    <span style="color: red;font-size: 11px;float: left;width: 100%"
+                                                          class="errorcvFile">{{ form_errors(form.cvFile) }}</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label style="float: left; color: #999; font-size: 14px; font-weight: 700; padding-top: 20px"
+                                                           for="title"> Lettre de motivation </label></td>
+                                                <td>
+                                                    <div style="width: 200px;">{{ form_widget(form.motivationFile) }}</div>
+                                                    {{ form_errors(form.motivationFile) }}
+                                                    <span style="color: red;font-size: 11px;float: left;width: 100%"
+                                                          class="errormotivationFile">{{ form_errors(form.motivationFile) }}</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <div class="not">
+                                            <label style="float: left; color: #999; font-size: 14px; font-weight: 700; padding-bottom: 20px; padding-top: 20px"
+                                                   for="title"> Plus de détails </label>
+                                            {{ form_widget(form.note, {'attr':{' onClick': 'this.select()','style': 'color: #000; font-size: 13px'}}) }}
+                                            <span style="color: red;font-size: 11px;float: left;width: 100%"
+                                                  class="error">{{ form_errors(form.note) }}</span>
+                                        </div>
+                                        <a id="submit" onclick="send()"
+                                           data-top-bottom="transform: translateY(-50px);"
+                                           data-bottom-top="transform: translateY(50px);">
+                                            <span>Postuler </span>
+                                        </a>
+                                        {{ form_end(form) }}
+                                    </div>
+                                </div>
+                                <!-- application form  end-->
+                            </div>
+                        </div>
+                    </div>
+                    <!--  container end  -->
+                </section>
+            </div>
+            <!-- content end-->
+            <!-- content footer-->
+            {% block footer %}
+                {{ parent() }}
+            {% endblock %}
+            <!-- content footer end -->
+        </div>
+        <!-- content-holder  end-->
+    </div>
+    <!-- wrapper end -->
+{% endblock %}
+{% block js %}
+    {{ parent() }}
+    {% javascripts output="js/compiled/fileStylejs.js"
+    'bundles/awapartners/frontAssets/filestyle/jquery-filestyle.min.js'
+    'bundles/awapartners/frontAssets/ajax-form/jquery.form.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script>
+        $('#' + '{{ form.requestType.vars.id }}').css("padding", "5px");
+        $('#' + '{{ form.applicationType.vars.id }}').css("padding", "5px");
+
+
+        function validateEmail(email) {
+            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
+
+        $(function () {
+            var reference = $('#sbc_awapartnersbundle_application_referenceOffre');
+            $('.reference').hide();
+        });
+
+        function hideshowreference() {
+            if ($("#sbc_awapartnersbundle_application_applicationType :selected").text() === 'Suite à une offre publiée') {
+                $('.reference').show();
+            }
+            else {
+                $('.reference').hide();
+            }
+        }
+
+        function send() {
+            if ($('#' + '{{ form.fullName.vars.id }}').val() === '') {
+                $('.errorfullName').html('Champ obligatoire');
+                $('#' + '{{ form.fullName.vars.id }}').css("border-color", "red");
+            }
+            else {
+                $('.errorfullName').html('');
+                $('#' + '{{ form.fullName.vars.id }}').css("border-color", "green");
+            }
+            if ($('#' + '{{ form.email.vars.id }}').val() === '') {
+                $('.erroremail').html('Champ obligatoire');
+                $('#' + '{{ form.email.vars.id }}').css("border-color", "red");
+            }
+            else if (!validateEmail($('#' + '{{ form.email.vars.id }}').val())) {
+                $('.erroremail').html('Email non valide');
+                $('#email').css("border-color", "red");
+            }
+            else {
+                $('.erroremail').html('');
+                $('#' + '{{ form.email.vars.id }}').css("border-color", "green");
+            }
+            if ($('#' + '{{ form.requestType.vars.id }}').val() === '') {
+                $('.errorrequestType').html('Champ obligatoire');
+                $('#' + '{{ form.requestType.vars.id }}').css("border-color", "red");
+                $('#' + '{{ form.requestType.vars.id }}').css("padding", "5px");
+            }
+            else {
+                $('.errorrequestType').html('');
+                $('#' + '{{ form.requestType.vars.id }}').css("border-color", "green");
+                $('#' + '{{ form.requestType.vars.id }}').css("padding", "5px");
+            }
+            if ($('#' + '{{ form.applicationType.vars.id }}').val() === '') {
+                $('.errorapplicationType').html('Champ obligatoire');
+                $('#' + '{{ form.applicationType.vars.id }}').css("border-color", "red");
+                $('#' + '{{ form.applicationType.vars.id }}').css("padding", "5px");
+            }
+            else {
+                $('.errorapplicationType').html('');
+                $('#' + '{{ form.applicationType.vars.id }}').css("border-color", "green");
+                $('#' + '{{ form.applicationType.vars.id }}').css("padding", "5px");
+            }
+            if ($('#' + '{{ form.cvFile.vars.id }}').val() === '') {
+                $('.errorcvFile').html('Champ obligatoire');
+                $('#' + '{{ form.cvFile.vars.id }}').css("border-color", "red");
+            }
+            else {
+                $('.errorcvFile').html('');
+                $('#' + '{{ form.cvFile.vars.id }}').css("border-color", "green");
+            }
+            if ($("#sbc_awapartnersbundle_application_applicationType :selected").text() === 'Suite à une offre publiée') {
+                if ($('#' + '{{ form.referenceOffre.vars.id }}').val() === '') {
+                    $('.errorreferenceOffre').html('Champ obligatoire');
+                    $('#' + '{{ form.referenceOffre.vars.id }}').css("border-color", "red");
+                }
+                else {
+                    $('.errorreferenceOffre').html('');
+                    $('#' + '{{ form.referenceOffre.vars.id }}').css("border-color", "green");
+                }
+            }
+            if ($('.errorcvFile').val() === '' && $('.errorapplicationType').val() === ''
+                && $('.errorrequestType').val() === '' && $('.erroremail').val() === '' && $('.errorfullName').val() === '' && validateEmail($('#' + '{{ form.email.vars.id }}').val())) {
+                if ($('#' + '{{ form.motivationFile.vars.id }}').val() === '') {
+                    var modal = document.getElementById('myModal');
+                    var span = document.getElementsByClassName("close")[0];
+                    var headmodal = $('#headModal');
+                    var bodymodal = $('#bodyModal');
+
+                    headmodal.html('');
+                    headmodal.append("Stop");
+                    bodymodal.html('');
+                    bodymodal.append("Etes vous sûr de ne pas vouloir joindre une lettre de motivation à votre candidature ?");
+                    modal.style.display = "block";
+                    $('.annuler').on('click', function () {
+                        modal.style.display = "none";
+                    })
+                }
+                else {
+
+                    yesSend();
+                }
+            }
+        }
+
+        function yesSend() {
+            var modal = document.getElementById('myModal');
+            var span = document.getElementsByClassName("close")[0];
+            var headmodal = $('#headModal');
+            var bodymodal = $('#bodyModal');
+            var footermodal = $('#footerModal');
+            headmodal.html('');
+            headmodal.append("Envoi des données en cours");
+            bodymodal.html('');
+            bodymodal.append("Veuillez patientez un instant pendant l'envoi");
+            modal.style.display = "block";
+            footermodal.html('');
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function (event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            };
+            $('#contactform').ajaxForm({
+                success: function () {
+                    modal.style.display = "none";
+                    headmodal.html('');
+                    headmodal.append('Succès');
+                    bodymodal.html('');
+                    bodymodal.append("<p style='color: green'>Votre candidature a été envoyée avec succès.</p>");
+                    modal.style.display = "block";
+                    // When the user clicks on <span> (x), close the modal
+                    span.onclick = function () {
+                        modal.style.display = "none";
+                    }
+                },
+                error: function () {
+                    modal.style.display = "none";
+                    headmodal.html('');
+                    headmodal.append('Erreur');
+                    bodymodal.html('');
+                    bodymodal.append("<p style='color: red'>Erreur lors du l\'envoi de la candidature, veuillez réessayer ultérieurement.</p>");
+                    modal.style.display = "block";
+                    // When the user clicks on <span> (x), close the modal
+                    span.onclick = function () {
+                        modal.style.display = "none";
+                    }
+                }
+            }).submit();
+        }
+    </script>
+{% endblock %}

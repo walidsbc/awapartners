@@ -1,0 +1,4 @@
+about_us:
+    path:     /
+    defaults: { _controller: "AWAPartnersBundle:AboutUs:aboutUs" }
+

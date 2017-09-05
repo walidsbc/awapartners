@@ -1,0 +1,31 @@
+skill_index:
+    path:     /
+    defaults: { _controller: "AWAPartnersBundle:Skill:index" }
+    methods:  GET
+
+skill_show:
+    path:     /{id}/show
+    defaults: { _controller: "AWAPartnersBundle:Skill:show" }
+    methods:  GET
+
+skill_new:
+    path:     /new
+    defaults: { _controller: "AWAPartnersBundle:Skill:new" }
+    methods:  [GET, POST]
+
+skill_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AWAPartnersBundle:Skill:edit" }
+    methods:  [GET, POST]
+
+skill_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AWAPartnersBundle:Skill:delete" }
+    methods:  DELETE
+
+skill_byname:
+    path:      /by-name/{name}
+    defaults:
+        _controller: AWAPartnersBundle:Skill:findByName
+    requirements:
+        name: .+

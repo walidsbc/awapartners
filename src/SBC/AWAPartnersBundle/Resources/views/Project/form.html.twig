@@ -1,0 +1,404 @@
+<div id="page_content_inner">
+    {{ form_start(form, {'attr':{'class':'uk-form-stacked', 'id':'form_validation'}}) }}
+    {{ form_errors(form) }}
+    <div class="uk-grid uk-grid-medium" data-uk-grid-margin>
+        <div class="uk-width-medium-3-10 uk-width-medium-3-10">
+            <div class="md-card">
+                <div class="md-card-toolbar">
+                    <h3 class="md-card-toolbar-heading-text">
+                        Image principale
+                    </h3>
+                </div>
+                <div class="md-card-content">
+                    <div class="uk-margin-bottom uk-text-center uk-position-relative">
+                        {{ form_widget(form.mainPictureFile) }}
+                        <span>     {{ form_errors(form.mainPictureFile) }} </span>
+                    </div>
+
+                    <div class="uk-form-row">
+                        <div class="parsley-row">
+                            {{ form_label(form.description,   "Déscription de l'image"  ) }}
+                            {{ form_widget(form.description) }}
+                            <span>     {{ form_errors(form.description) }} </span>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="uk-width-medium-7-10 uk-width-medium-7-10">
+            <div class="md-card">
+                <div class="md-card-toolbar">
+                    <h3 class="md-card-toolbar-heading-text">
+                        Details
+                    </h3>
+                </div>
+                <div class="md-card-content large-padding">
+                    <div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin>
+                        <div class="uk-width-large-1-2">
+                            <div class="uk-form-row">
+                                <div class="parsley-row">
+                                    {{ form_label(form.title,   "Titre"  ) }}
+                                    {{ form_widget(form.title) }}
+                                    <span>     {{ form_errors(form.title) }} </span>
+                                </div>
+                            </div>
+                            <div class="uk-form-row">
+                                <div class="parsley-row">
+                                    {{ form_label(form.location,   "Localisation" ) }}
+                                    {{ form_widget(form.location) }}
+                                    <span>     {{ form_errors(form.location) }} </span>
+                                </div>
+                            </div>
+                            <div class="uk-form-row">
+                                <div class="parsley-row">
+                                    <span class="uk-form-help-block">{{ form_label(form.projecType,   "Type de projet" ) }}</span>
+                                    {{ form_widget(form.projecType) }}
+                                    <span>     {{ form_errors(form.projecType) }} </span>
+                                </div>
+                            </div>
+                            <div class="uk-form-row">
+                                <div class="parsley-row">
+                                    <span class="uk-form-help-block">{{ form_label(form.client,   "Client" ) }}</span>
+                                    {{ form_widget(form.client) }}
+                                    <span>     {{ form_errors(form.client) }} </span>
+                                </div>
+                            </div>
+                            <div class="uk-form-row">
+                                <div class="parsley-row">
+                                    {{ form_label(form.cout,   "Coût" ) }}
+                                    {{ form_widget(form.cout) }}
+                                    <span>     {{ form_errors(form.cout) }} </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-width-large-1-2">
+                            <div class="uk-form-row">
+                                <div class="parsley-row">
+                                    {{ form_label(form.company,   "Entreprise" ) }}
+                                    {{ form_widget(form.company) }}
+                                    <span>     {{ form_errors(form.company) }} </span>
+                                </div>
+                            </div>
+                            <div class="uk-form-row">
+                                <div class="parsley-row">
+                                    {{ form_label(form.maitreOuvrage,   "Maître d'ouvrage" ) }}
+                                    {{ form_widget(form.maitreOuvrage) }}
+                                    <span>     {{ form_errors(form.maitreOuvrage) }} </span>
+                                </div>
+                            </div>
+                            <div class="uk-form-row">
+                                <div class="parsley-row">
+                                    {{ form_label(form.note,   "Déscription du projet" ) }}
+                                    {{ form_widget(form.note) }}
+                                    <span>     {{ form_errors(form.note) }} </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="uk-width-medium-5-10 uk-width-medium-5-10">
+            <div class="md-card">
+                <div class="md-card-toolbar">
+                    <h3 class="md-card-toolbar-heading-text">
+                        Conception / Réalisation
+                    </h3>
+                </div>
+                <div class="md-card-content large-padding">
+                    <div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin>
+                        <div class="uk-width-large-1-2">
+                            <div class="uk-form-row">
+                                <div class="parsley-row">
+                                    {{ form_label(form.conceptionPeriode,   "Période de conception"  ) }}
+                                    {{ form_widget(form.conceptionPeriode) }}
+                                    <span>     {{ form_errors(form.conceptionPeriode) }} </span>
+                                </div>
+                            </div>
+                            <div class="uk-form-row">
+                                <div class="parsley-row">
+                                    {{ form_label(form.conceptionBeginDate,   "Date début de la conception" ) }}
+                                    {{ form_widget(form.conceptionBeginDate) }}
+                                    <span>     {{ form_errors(form.conceptionBeginDate) }} </span>
+                                </div>
+                            </div>
+                            <div class="uk-form-row">
+                                <div class="parsley-row">
+                                   {{ form_label(form.conceptionFinishDate,   "Date début de la conception" ) }}
+                                    {{ form_widget(form.conceptionFinishDate) }}
+                                    <span>     {{ form_errors(form.conceptionFinishDate) }} </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-width-large-1-2">
+                            <div class="uk-form-row">
+                                <div class="parsley-row">
+                                    {{ form_label(form.constructionPeriode,   "Période de construction"  ) }}
+                                    {{ form_widget(form.constructionPeriode) }}
+                                    <span>     {{ form_errors(form.constructionPeriode) }} </span>
+                                </div>
+                            </div>
+                            <div class="uk-form-row">
+                                <div class="parsley-row">
+                                    {{ form_label(form.constructionBeginDate,   "Date début de la construction" ) }}
+                                    {{ form_widget(form.constructionBeginDate) }}
+                                    <span>     {{ form_errors(form.constructionBeginDate) }} </span>
+                                </div>
+                            </div>
+                            <div class="uk-form-row">
+                                <div class="parsley-row">
+                                    {{ form_label(form.constructionFinishDate,   "Date début de la construction" ) }}
+                                    {{ form_widget(form.constructionFinishDate) }}
+                                    <span>     {{ form_errors(form.constructionFinishDate) }} </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="uk-width-medium-5-10 uk-width-medium-5-10">
+            <div class="md-card">
+                <div class="md-card-toolbar">
+                    <h3 class="md-card-toolbar-heading-text">
+                        Details
+                    </h3>
+                </div>
+                <div class="md-card-content large-padding">
+                    <div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin>
+                        <div class="uk-width-large-1-2">
+                            <div class="uk-form-row">
+                                <div class="parsley-row">
+                                   {{ form_label(form.conceptionTeam,   "Equipe de conception" ) }}
+                                    {{ form_widget(form.conceptionTeam) }}
+                                    <span>     {{ form_errors(form.conceptionTeam) }} </span>
+                                </div>
+                            </div>
+                            <div class="uk-form-row">
+                                <div class="parsley-row">
+                                    {{ form_label(form.composante,   "Composantes" ) }}
+                                    {{ form_widget(form.composante) }}
+                                    <span>     {{ form_errors(form.composante) }} </span>
+                                </div>
+                            </div>
+                            <div class="uk-form-row">
+                                <div class="parsley-row">
+                                    {{ form_label(form.mission,   "Missions" ) }}
+                                    {{ form_widget(form.mission) }}
+                                    <span>     {{ form_errors(form.mission) }} </span>
+                                </div>
+                            </div>
+                            <div class="uk-form-row">
+                                <div class="parsley-row">
+                                    {{ form_label(form.tache,   "Tâches" ) }}
+                                    {{ form_widget(form.tache) }}
+                                    <span>     {{ form_errors(form.tache) }} </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-width-large-1-2">
+                            <div class="uk-form-row">
+                                <div class="parsley-row">
+                                    {{ form_label(form.surfaceTerrain,   "Surface terrain"  ) }}
+                                    {{ form_widget(form.surfaceTerrain) }}
+                                    <span>     {{ form_errors(form.surfaceTerrain) }} </span>
+                                </div>
+                            </div>
+                            <div class="uk-form-row">
+                                <div class="parsley-row">
+                                    {{ form_label(form.surfaceCouverte,   "Surface couverte totale" ) }}
+                                    {{ form_widget(form.surfaceCouverte) }}
+                                    <span>     {{ form_errors(form.surfaceCouverte) }} </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="uk-width-xLarge-1-1 uk-width-large-1-1">
+            <div class="md-card">
+                <div class="md-card-toolbar">
+                    <h3 class="md-card-toolbar-heading-text">
+                        Gallerie
+                    </h3>
+                </div>
+                <div class="md-card-content large-padding">
+                    {% if project.id == 0 or form.pictures|length ==0 %}
+                        {{ form_widget(form.pictures, {'attr': {'class': 'uk-grid'}} ) }}
+                    {% else %}
+                        <div id="{{ form.pictures.vars.id }}" class="uk-grid" data-uk-grid-margin
+                             data-prototype="{{ form_widget(form.pictures.vars.prototype)|e('html_attr') }}">
+                            {% for projectPicture in form.pictures %}
+                                <div class="uk-width-medium-1-4 blockSection">
+                                    <div class="uk-form-row">
+                                        <div class="parsley-row">
+                                            Image
+                                            {% set urlPicture = asset('images/projects/')~  project.pictures.get(loop.index-1).fileName %}
+                                            {{ form_widget(projectPicture.file,
+                                            {'attr': {'class': 'dropify-fr', 'data-default-file': urlPicture }}) }}
+                                            <span>{{ form_errors(projectPicture.file) }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="uk-form-row">
+                                        <div class="parsley-row">
+                                            {{ form_label(projectPicture.description,"Déscription") }}
+                                            {{ form_widget(projectPicture.description,{'attr': {'class': 'md-input' }}) }}
+                                            <span>{{ form_errors(projectPicture.description) }}</span>
+                                        </div>
+                                    </div>
+                                    <a class="btn-close">
+                                        <i class="material-icons md-24">&#xE872;</i>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <a id="addPicture"><i class="material-icons md-24">&#xE146;</i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {#<div class="md-fab-wrapper">#}
+        {#{{ form_widget(form.save, "") }}#}
+    {#</div>#}
+    <div class="md-fab-wrapper">
+        <button type="submit" class="md-fab md-fab-accent md-fab-wave-light" id="invoice_add"
+                data-uk-tooltip="{cls:'uk-tooltip-small',pos:'left'}" title="Valider">
+            <i class="material-icons">&#xE161;</i>
+        </button>
+    </div>
+    {{ form_rest(form) }}
+    {{ form_end(form) }}
+</div>
+<script>
+    function templatePicture() {
+        return '<div class="uk-width-medium-1-4 bloc">' +
+            '<div class="uk-form-row">' +
+            '<div class="parsley-row">' +
+            '<label>Image</label>' +
+            '#picture#' +
+            '<span></span>' +
+            '</div>' +
+            '</div>' +
+            '<div class="uk-form-row">' +
+            '<div class="parsley-row">' +
+            '<label>Déscription</label>' +
+            '#description#' +
+            '<span></span>' +
+            '</div>' +
+            '</div>' +
+            '<a class="btn-close"><i class="material-icons md-24">&#xE872;</i></a>' +
+            '</div>'
+            ;
+    }
+    $(function () {
+        var picturesDOM = $('#' + '{{ form.pictures.vars.id }}');
+        var buildPrototypes = {
+            counterPictures: picturesDOM.children().length,
+            prototypePictures: picturesDOM.attr('data-prototype'),
+            pictures: picturesDOM,
+            init: function () {
+                $('#addPicture').on('click', function () {
+                    buildPrototypes.buildPictureSection();
+                });
+                $('.btn-close').on('click', function () {
+                    this.closest('div').remove();
+                });
+            },
+            buildPictureSection: function () {
+                this.counterPictures++;
+                var prototypePicturesDOM = $('<div/>').html(this.prototypePictures).contents();
+                var temp = SFCollectionAnalyzer.buildTemplate(prototypePicturesDOM, templatePicture());
+                var block = temp.replace(/__name__/g, this.counterPictures);
+                this.pictures.append(block);
+                this.reInit();
+            },
+            reInit: function () {
+                $('.btn-close').on('click', function () {
+                    this.closest('div').remove();
+                });
+                altair_md.init();
+                this.pictures.find('input[type=file]').dropify({
+                    messages: {
+                        'default': 'Cliquez ou glissez / déposez un fichier ici',
+                        'replace': 'Cliquez ou glissez / déposez un fichier ici pour remplacer',
+                        'remove': 'Supprimer',
+                        'error': 'Une erreur s\'est survenue'
+                    }
+                });
+            }
+        };
+        buildPrototypes.init();
+        var picture = $('#' + '{{ form.mainPictureFile.vars.id }}');
+        $('.dropify-clear').on('click', function () {
+            picture.prop('required', false);
+        });
+        picture.dropify({
+            defaultFile: '{{ vich_uploader_asset(project, 'mainPictureFile') }}',
+            messages: {
+                'default': 'Cliquez ou glissez / déposez un fichier ici',
+                'replace': 'Cliquez ou glissez / déposez un fichier ici pour remplacer',
+                'remove': 'Supprimer',
+                'error': 'Une erreur s\'est survenue'
+            }
+        });
+        $('.select' ).kendoComboBox({
+            filter: "contains",
+            suggest: true
+        });
+        setFormatNumber();
+        var domTitle = $('#sbc_awapartnersbundle_project_title');
+        var oldtitle = domTitle.val().toUpperCase();
+        domTitle.on('change', function () {
+            var title = domTitle.val().toUpperCase();
+            var url = '{{ path('project_by_title', {'title': 'titlE'}) }}';
+            url = url.replace('titlE', title);
+            if (title !== oldtitle) {
+                $.ajax({
+                    async: true,
+                    type: "POST",
+                    url: url,
+                    success: function (json) {
+                        if (json.exists) {
+                            window.Parsley.addValidator('title', {
+                                validateString: function () {
+                                    return false;
+                                },
+                                messages: {
+                                    en: 'Ce projet existe déjà',
+                                    fr: "Ce projet existe déjà"
+                                }
+                            });
+                        } else {
+                            window.Parsley.addValidator('title', {
+                                validateString: function () {
+                                    return true;
+                                }
+                            });
+                        }
+                        domTitle.parsley().validate();
+                    }
+                });
+            }
+        });
+    });
+    function setFormatNumber() {
+        $('.numeric').blur(function () {
+            $(this).parseNumber({format: "######0.00", locale: "us"});
+            $(this).formatNumber({format: "######0.00", locale: "us"});
+        });
+        $('.money').blur(function () {
+            $(this).parseNumber({format: "#,##0.000", locale: "fr"});
+            $(this).formatNumber({format: '#,##0.000', locale: 'fr'});
+        });
+    }
+</script>

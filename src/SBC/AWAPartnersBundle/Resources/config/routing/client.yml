@@ -1,0 +1,39 @@
+client_index:
+    path:     /back-office/partenaire/list
+    defaults: { _controller: "AWAPartnersBundle:Client:index" }
+    methods:  GET
+
+client_list:
+    path:     /partenaires
+    defaults: { _controller: "AWAPartnersBundle:Client:list" }
+    methods:  GET
+
+client_show:
+    path:     /back-office/partenaire/{id}/show
+    defaults: { _controller: "AWAPartnersBundle:Client:show" }
+    methods:  GET
+
+client_new:
+    path:     /back-office/partenaire/new
+    defaults: { _controller: "AWAPartnersBundle:Client:new" }
+    methods:  [GET, POST]
+
+client_edit:
+    path:     /back-office/partenaire/{id}/edit
+    defaults: { _controller: "AWAPartnersBundle:Client:edit" }
+    methods:  [GET, POST]
+
+client_delete:
+    path:     /back-office/partenaire/{id}/delete
+    defaults: { _controller: "AWAPartnersBundle:Client:delete" }
+    methods:  DELETE
+
+client_masquer:
+    path:     /back-office/partenaire/{id}/masquer
+    defaults: { _controller: "AWAPartnersBundle:Client:maskOrDisplay" }
+    methods:  [GET, POST]
+
+client_update_position:
+    path:     /back-office/partenaire/update-posisiton
+    defaults: { _controller: "AWAPartnersBundle:Client:updatePositions" }
+    methods:  [GET, POST]

@@ -1,0 +1,39 @@
+awa_partners_project_type:
+    resource: "@AWAPartnersBundle/Resources/config/routing/project_type.yml"
+    prefix:   /back-office/project-type
+
+awa_partners_project:
+    resource: "@AWAPartnersBundle/Resources/config/routing/project.yml"
+
+awa_partners_about_us:
+    resource: "@AWAPartnersBundle/Resources/config/routing/about_us.yml"
+    prefix:   /a-propos-de-nous
+
+awa_partners_home:
+    resource: "@AWAPartnersBundle/Resources/config/routing/home.yml"
+    prefix:   /
+
+awa_partners_contact:
+    resource: "@AWAPartnersBundle/Resources/config/routing/contact.yml"
+    prefix:   /contactez-nous
+
+awa_partners_application:
+    resource: "@AWAPartnersBundle/Resources/config/routing/application.yml"
+
+awa_partners_client:
+    resource: "@AWAPartnersBundle/Resources/config/routing/client.yml"
+
+awa_partners_contactmail:
+    resource: "@AWAPartnersBundle/Resources/config/routing/contactmail.yml"
+    prefix:   /back-office/contact-mail
+
+awa_partners_applicationmail:
+    resource: "@AWAPartnersBundle/Resources/config/routing/applicationmail.yml"
+    prefix:   /back-office/application-mail
+
+awa_partners_skill:
+    resource: "@AWAPartnersBundle/Resources/config/routing/skill.yml"
+    prefix:   /back-office/skill
+
+
+

@@ -1,0 +1,14 @@
+application_index:
+    path:     /back-office/carrière
+    defaults: { _controller: "AWAPartnersBundle:Application:index" }
+    methods:  GET
+
+application_show:
+    path:     /back-office/carrière/{id}/show
+    defaults: { _controller: "AWAPartnersBundle:Application:show" }
+    methods:  GET
+
+application_new:
+    path:     /carrière/new
+    defaults: { _controller: "AWAPartnersBundle:Application:new" }
+    methods:  [GET, POST]

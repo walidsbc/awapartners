@@ -1,0 +1,26 @@
+applicationmail_index:
+    path:     /
+    defaults: { _controller: "AWAPartnersBundle:ApplicationMail:index" }
+    methods:  GET
+
+applicationmail_new:
+    path:     /new
+    defaults: { _controller: "AWAPartnersBundle:ApplicationMail:new" }
+    methods:  [GET, POST]
+
+applicationmail_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AWAPartnersBundle:ApplicationMail:edit" }
+    methods:  [GET, POST]
+
+applicationmail_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AWAPartnersBundle:ApplicationMail:delete" }
+    methods:  DELETE
+
+applicationmail_by_mail:
+    path:     /{mail}/by-mail
+    defaults: { _controller: "AWAPartnersBundle:ApplicationMail:findByMail" }
+    methods:  [GET, POST]
+    requirements:
+        title: .+

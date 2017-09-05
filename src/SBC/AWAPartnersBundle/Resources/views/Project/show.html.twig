@@ -1,0 +1,253 @@
+{% extends '::baseFront.html.twig' %}
+{% block title %} {{ project }} {{ parent() }} {% endblock %}
+{% block css %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <!--=============== wrapper ===============-->
+    <div id="wrapper">
+        <!-- content-holder  -->
+        <div class="content-holder">
+            <!-- Page title -->
+            <div class="dynamic-title">{{ project }}</div>
+            <!-- Page title  end-->
+            <!-- content  -->
+            <div class="content hor-content full-height pad-con no-bg-con">
+                <!-- portfolio  Images  -->
+                <div class="control-panel">
+                    <div class="container">
+                        <div class="caption"></div>
+                        <a href="#" class=" btn anim-button   flat-btn   transition    show-hid-sidebar">
+                            <span>Détails du projet</span>
+                            <i class="fa fa-eye"></i>
+                        </a>
+                        <span class="show-thumbs vis-con-panel vis-t" data-textshow="Afficher en vignettes"
+                              data-texthide="Afficher grandes images"></span>
+                    </div>
+                </div>
+                <div class="resize-carousel-holder lightgallery ogm smp">
+                    <div id="gallery_horizontal" class="gallery_horizontal" data-cen="1">
+                        {% for picture in project.pictures %}
+                            <!-- gallery Item-->
+                            <div class="horizontal_item" data-phname="{{ project }}"
+                                 data-phdesc="{{ project }}">
+
+                                <img src="{{ vich_uploader_asset(picture, 'file') }}" alt="{{ picture.description }}"/>
+                                <a data-src="{{ vich_uploader_asset(picture, 'file') }}"
+                                   class="popup-image slider-zoom">
+                                    <i class="fa fa-expand"></i>
+                                </a>
+                            </div>
+                            <!-- gallery item end-->
+                        {% endfor %}
+                    </div>
+                    <!--  navigation -->
+                    <div class="customNavigation fhsln">
+                        <a class="prev-slide transition"><i class="fa fa-angle-left"></i></a>
+                        <a class="next-slide transition"><i class="fa fa-angle-right"></i></a>
+                    </div>
+                    <!--  navigation end-->
+                </div>
+                <!-- portfolio  Images  end-->
+                <!-- Hidden sidebar-->
+                <div class="sb-overlay"></div>
+                <div class="hid-sidebar">
+                    <div class="container small-container">
+                        <div class="sidebar-wrap">
+                            <div class="sb-bg"></div>
+                            <div class="sb-inner">
+                                <div class="close-sidebar"></div>
+                                <h2 class="section-title"><strong> {{ project }} </strong></h2>
+                                <div class="separator"></div>
+                                <div class="clearfix"></div>
+                                <p style="max-height: 120px;overflow: auto;">{{ project.note }}</p>
+                                <h4>Informations</h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <ul class="project-details">
+                                            <li>
+                                                <div class="pd-holder">
+                                                    <h5 style="text-transform: capitalize">Type du projet : <a href="#">{{ project.projecType }}</a></h5>
+                                                </div>
+                                            </li>
+
+                                            <li>
+                                                <div class="pd-holder">
+                                                    <h5 style="text-transform: capitalize">Client : <a href="#">{{ project.client }}</a></h5>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="pd-holder">
+                                                    <h5 style="text-transform: capitalize">Localisation : <a href="#">{{ project.location }}</a></h5>
+                                                </div>
+                                            </li>
+                                            {% if project.conceptionTeam is not null %}
+                                                <li>
+                                                    <div class="pd-holder">
+                                                        <h5 style="text-transform: capitalize">Equipe de conception : <a href="#">{{ project.conceptionTeam }}</a>
+                                                        </h5>
+                                                    </div>
+                                                </li>
+                                            {% endif %}
+                                            {% if project.composante is not null %}
+                                                <li>
+                                                    <div class="pd-holder">
+                                                        <h5 style="text-transform: capitalize">Composantes : <a href="#">{{ project.composante }}</a>
+                                                        </h5>
+                                                    </div>
+                                                </li>
+                                            {% endif %}
+
+                                            {% if project.tache is not null %}
+                                                <li>
+                                                    <div class="pd-holder">
+                                                        <h5 style="text-transform: capitalize">Tâches : <a href="#">{{ project.tache }}</a>
+                                                        </h5>
+                                                    </div>
+                                                </li>
+                                            {% endif %}
+                                            {% if project.company is not null %}
+                                                <li>
+                                                    <div class="pd-holder">
+                                                        <h5  style="text-transform: capitalize">Entreprise : <a href="#">{{ project.company }}</a>
+                                                        </h5>
+                                                    </div>
+                                                </li>
+                                            {% endif %}
+                                            {% if project.mission is not null %}
+                                                <li>
+                                                    <div class="pd-holder">
+                                                        <h5 style="text-transform: capitalize">Missions : <a href="#">{{ project.mission }}</a>
+                                                        </h5>
+                                                    </div>
+                                                </li>
+                                            {% endif %}
+                                            {% if project.maitreOuvrage is not null %}
+                                                <li>
+                                                    <div class="pd-holder">
+                                                        <h5 style="text-transform: capitalize">Maître d'ouvrage : <a href="#">{{ project.maitreOuvrage }}</a>
+                                                        </h5>
+                                                    </div>
+                                                </li>
+                                            {% endif %}
+
+                                        </ul>
+
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <ul class="project-details">
+
+                                            {% if project.conceptionPeriode is not null %}
+                                                <li>
+                                                    <div class="pd-holder">
+                                                        <h5 style="text-transform: capitalize">Période de conception: <a href="#">{{ project.conceptionPeriode }}</a>
+                                                        </h5>
+                                                    </div>
+                                                </li>
+                                            {% endif %}
+                                            {% if project.conceptionBeginDate is not null %}
+                                                <li>
+                                                    <div class="pd-holder">
+                                                        <h5 style="text-transform: capitalize">Date début : <a href="#">{{ project.conceptionBeginDate|date('d/m/Y') }}</a>
+                                                        </h5>
+                                                    </div>
+                                                </li>
+                                            {% endif %}
+                                            {% if project.conceptionFinishDate is not null %}
+                                                <li>
+                                                    <div class="pd-holder">
+                                                        <h5 style="text-transform: capitalize">Date fin : <a href="#">{{ project.conceptionFinishDate|date('d/m/Y') }}</a>
+                                                        </h5>
+                                                    </div>
+                                                </li>
+                                            {% endif %}
+
+
+
+                                            {% if project.constructionPeriode is not null %}
+                                                <li>
+                                                    <div class="pd-holder">
+                                                        <h5 style="text-transform: capitalize">Période de construction: <a href="#">{{ project.constructionPeriode }}</a>
+                                                        </h5>
+                                                    </div>
+                                                </li>
+                                            {% endif %}
+                                            {% if project.constructionBeginDate is not null %}
+                                                <li>
+                                                    <div class="pd-holder">
+                                                        <h5 style="text-transform: capitalize">Date début : <a href="#">{{ project.constructionBeginDate|date('d/m/Y') }}</a>
+                                                        </h5>
+                                                    </div>
+                                                </li>
+                                            {% endif %}
+                                            {% if project.constructionFinishDate is not null %}
+                                                <li>
+                                                    <div class="pd-holder">
+                                                        <h5 style="text-transform: capitalize">Date fin : <a href="#">{{ project.constructionFinishDate|date('d/m/Y') }}</a>
+                                                        </h5>
+                                                    </div>
+                                                </li>
+                                            {% endif %}
+                                            {% if project.surfaceTerrain is not null %}
+                                                <li>
+                                                    <div class="pd-holder">
+                                                        <h5 style="text-transform: capitalize">Surface terrain : <a href="#">{{ project.surfaceTerrain }}</a>
+                                                        </h5>
+                                                    </div>
+                                                </li>
+                                            {% endif %}
+                                            {% if project.surfaceCouverte is not null %}
+                                                <li>
+                                                    <div class="pd-holder">
+                                                        <h5 style="text-transform: capitalize">Surface couverte totale : <a href="#">{{ project.surfaceCouverte }}</a>
+                                                        </h5>
+                                                    </div>
+                                                </li>
+                                            {% endif %}
+
+                                        </ul>
+
+                                    </div>
+
+
+                                </div>
+
+                                {#<a href="#" class=" btn anim-button   flat-btn   transition  fl-l"#}
+                                {#target="_blank"><span>View Project</span><i class="fa fa-eye"></i></a>#}
+                                <div class="content-nav">
+                                    <ul>
+                                        <li>
+                                            {#<a href="portfolio-single2.html" class=" text-link">next project</a>#}
+                                        </li>
+                                        <li>
+                                            {#<a href="portfolio-single3.html" class=" text-link">prev project</a>#}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- sidebar end -->
+            </div>
+            <!-- content end -->
+            <!-- share  -->
+            <div class="share-inner">
+                <div class="share-container  isShare" data-share="['facebook','googleplus','twitter','linkedin']"></div>
+                <div class="close-share"></div>
+            </div>
+            <!-- share end -->
+        </div>
+        <!-- content-holder  end-->
+    </div>
+    <!-- wrapper end -->
+    <!-- Fixed footer -->
+    {#{% block footer %}#}
+    {#{{ parent() }}#}
+    {#{% endblock %}#}
+    <!-- Fixed footer end-->
+{% endblock %}
+{% block js %}
+    {{ parent() }}
+{% endblock %}

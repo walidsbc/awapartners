@@ -1,0 +1,93 @@
+{% extends '::baseFront.html.twig' %}
+{% block title %} Projets {{ parent() }} {% endblock %}
+{% block css %}
+    {{ parent() }}
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
+{% endblock %}
+{% block body %}
+    <div id="wrapper">
+        <div class="content-holder">
+            <div class="dynamic-title">Tous les projects</div>
+            <div class="content hor-content  pad-con no-bg-con">
+                <section>
+                    <div class="container">
+                        <div class="page-title">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h2 style="color: black;"> Nos <strong> Projets</strong></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filter-holder inline-filter">
+                            <div class="gallery-filters">
+                                <a href="#" style="color: red; font-size: 18px"
+                                   class="gallery-filter transition2 gallery-filter_active" data-filter="*">Tous</a>
+                                {% for projectType in projectTypes %}
+                                    <a href="#" class="gallery-filter transition2"
+                                       data-filter=".{{ projectType.id }}">{{ projectType }}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="gallery-items three-columns grid-small-pad ">
+                            {% for project in projects %}
+                                <div class='gallery-item {{ project.projecType.id }}'>
+                                    <div class="grid-item-holder">
+                                        <article>
+                                            <div>
+                                                <a href="{{ path('project_show', {id: project.id}) }}" target="_blank">
+                                                    <img width="1000" height="800"
+                                                         src="{{ vich_uploader_asset(project, 'mainPictureFile') }}"
+                                                         alt="{{ project.description }}">
+                                                    <span class="entry-image-overlay"></span>
+                                                </a>
+                                            </div>
+                                            <div class="cadre">
+                                                <div class="row">
+                                                    <h2 style="font-size: 20px; margin: 10px 0 10px 0 !important;">
+                                                        <a target="_blank"
+                                                           href="{{ path('project_show', {id: project.id}) }}"
+                                                           rel="bookmark">{{ project.title }}
+                                                        </a>
+                                                    </h2>
+                                                </div>
+                                                <div style="margin-left: 10px">
+                                                    <div class="row"  style="margin: 10px 0 10px 0">
+                                                        <div class="row" style="margin-left: 3px">
+                                                        <p style="font-size: 14px; text-transform: capitalize; float: left">Type de projet
+                                                            : <a href="#" style="cursor: default; text-transform: uppercase">{{ project.projecType }}</a></p>
+                                                        </div>
+                                                        <div class="row" style="margin-left: 3px">
+                                                        <p style="font-size: 14px;margin-top: -10px; text-transform: capitalize; float: left">Client
+                                                            : <a href="#" style="cursor: default; text-transform: uppercase">{{ project.client }}</a></p>
+                                                        </div>
+                                                        </div>
+                                                    <div class="row" style="margin: 20px 0 10px 0">
+                                                        <p style="color:#696868; font-size: 13px !important;">
+                                                            {{ shrink(project.note, 110) }}
+                                                        </p>
+                                                        <a id="submit" target="_blank" style="margin-bottom: 10px"
+                                                           href="{{ path('project_show', {id: project.id}) }}"
+                                                           data-top-bottom="transform: translateY(-10px);"
+                                                           data-bottom-top="transform: translateY(10px);">
+                                                            <span>Voir plus </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </section>
+            </div>
+            {% block footer %}
+                {{ parent() }}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    {{ parent() }}
+{% endblock %}

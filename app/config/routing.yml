@@ -1,0 +1,19 @@
+awa_partners:
+    resource: "@AWAPartnersBundle/Resources/config/routing.yml"
+    prefix:   /demo/
+
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /demo/back-office/
+
+utils:
+    resource: "@UtilsBundle/Resources/config/routing.yml"
+    prefix:   /demo/back-office/
+
+visitors:
+    resource: "@AlphaVisitorTrackingBundle/Resources/config/routing.yml"
+    prefix:   /demo/back-office/
+
+awa_partners_index:
+    resource: "@AWAPartnersBundle/Resources/config/routing/index.yml"
+    prefix:   /

@@ -1,0 +1,4 @@
+services:
+#    awa_partners.example:
+#        class: SBC\AWAPartnersBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

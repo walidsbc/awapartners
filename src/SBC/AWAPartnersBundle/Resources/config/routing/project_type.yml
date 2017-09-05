@@ -1,0 +1,31 @@
+project_type_index:
+    path:     /
+    defaults: { _controller: "AWAPartnersBundle:ProjectType:index" }
+    methods:  GET
+
+project_type_show:
+    path:     /{id}/show
+    defaults: { _controller: "AWAPartnersBundle:ProjectType:show" }
+    methods:  GET
+
+project_type_new:
+    path:     /new
+    defaults: { _controller: "AWAPartnersBundle:ProjectType:new" }
+    methods:  [GET, POST]
+
+project_type_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AWAPartnersBundle:ProjectType:edit" }
+    methods:  [GET, POST]
+
+project_type_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AWAPartnersBundle:ProjectType:delete" }
+    methods:  DELETE
+
+project_type_by_title:
+    path:     /{title}/by-title
+    defaults: { _controller: "AWAPartnersBundle:ProjectType:findByTitle" }
+    methods:  [GET, POST]
+    requirements:
+        title: .+

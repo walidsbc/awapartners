@@ -1,0 +1,49 @@
+{% extends '::baseFront.html.twig' %}
+{% block title %} Partenaires {{ parent() }} {% endblock %}
+{% block css %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <!--=============== wrapper ===============-->
+    <div id="wrapper">
+        <!-- content-holder  -->
+        <div class="content-holder">
+            <!-- content  -->
+            <div class="content hor-content pad-con no-bg-con" style="background-color: #EAEAEA">
+                <section>
+                    <div class="container">
+                        <div class="page-title">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h2 style="color: black;"> Nos <strong> Clients</strong></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="services-holder">
+                            {% for client in clients %}
+                                <a class="serv-item">
+                                    <div class="serv-item-inner"
+                                         style="height: 150px;display: flex;justify-content: center;align-content: center;">
+                                        <img src="{{ vich_uploader_asset(client, 'logoFile') }}"
+                                             alt="{{ client.name }}">
+                                    </div>
+                                    <span style="width:100%;float:left;font-size:12px;margin-top:10px;color:#000;position:relative;text-transform:uppercase;max-height: 1.4em;height: 2em; text-overflow: ellipsis;white-space: normal;word-break: break-all">  {{ shrink(client.name, 45) }} </span>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- content end -->
+            <!-- content footer-->
+            {% block footer %}
+                {{ parent() }}
+            {% endblock %}
+        </div>
+        <!-- content-holder  end-->
+    </div>
+    <!-- wrapper end -->
+{% endblock %}
+{% block js %}
+    {{ parent() }}
+{% endblock %}

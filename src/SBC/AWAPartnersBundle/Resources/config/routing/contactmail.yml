@@ -1,0 +1,26 @@
+contactmail_index:
+    path:     /
+    defaults: { _controller: "AWAPartnersBundle:ContactMail:index" }
+    methods:  GET
+
+contactmail_new:
+    path:     /new
+    defaults: { _controller: "AWAPartnersBundle:ContactMail:new" }
+    methods:  [GET, POST]
+
+contactmail_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AWAPartnersBundle:ContactMail:edit" }
+    methods:  [GET, POST]
+
+contactmail_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AWAPartnersBundle:ContactMail:delete" }
+    methods:  DELETE
+
+contactmail_by_mail:
+    path:     /{mail}/by-mail
+    defaults: { _controller: "AWAPartnersBundle:ContactMail:findByMail" }
+    methods:  [GET, POST]
+    requirements:
+        title: .+

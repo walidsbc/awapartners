@@ -1,0 +1,8 @@
+contact_index:
+    path:     /
+    defaults: { _controller: "AWAPartnersBundle:Contact:contact" }
+
+contact_send:
+    path:     /send
+    defaults: { _controller: "AWAPartnersBundle:Contact:send" }
+

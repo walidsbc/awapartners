@@ -1,0 +1,67 @@
+<div id="page_content_inner">
+    <div class="md-card">
+        <div class="md-card-content large-padding">
+            {{ form_start(form, {'attr':{'class':'uk-form-stacked', 'id':'form_validation'}}) }}
+            {{ form_errors(form) }}
+            <div class="uk-grid" data-uk-grid-margin>
+                <div class="uk-width-medium-1-2">
+                    <div class="parsley-row">
+                        <div class="uk-input-group">
+                            <span class="uk-input-group-addon">
+                                <i class="md-list-addon-icon material-icons">&#xE7F1;</i>
+                            </span>
+                            {{ form_label(form.title,   "Titre"  ) }}
+                            {{ form_widget(form.title) }}
+                        </div>
+                        <span>     {{ form_errors(form.title) }} </span>
+                    </div>
+                </div>
+            </div>
+            <div class="uk-grid">
+                <div class="uk-width-1-1">
+                    {{ form_widget(form.save) }}
+                </div>
+            </div>
+            {{ form_rest(form) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        var domTitle = $('#sbc_awapartnersbundle_projecttype_title');
+        var oldTitle = domTitle.val().toUpperCase();
+        domTitle.on('change', function () {
+            var title = domTitle.val().toUpperCase();
+            var url = '{{ path('project_type_by_title', {'title': 'titlE'}) }}';
+            url = url.replace('titlE', title);
+            if (title !== oldTitle) {
+                $.ajax({
+                    async: true,
+                    type: "POST",
+                    url: url,
+                    success: function (json) {
+                        if (json.exists) {
+                            window.Parsley.addValidator('title', {
+                                validateString: function () {
+                                    return false;
+                                },
+                                messages: {
+                                    en: 'Ce type de projet existe déjà',
+                                    fr: "Ce type de projet existe déjà"
+                                }
+                            });
+                        } else {
+                            window.Parsley.addValidator('title', {
+                                validateString: function () {
+                                    return true;
+                                }
+                            });
+                        }
+                        domTitle.parsley().validate();
+                    }
+                });
+            }
+        });
+    });
+</script>

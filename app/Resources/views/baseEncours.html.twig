@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html lang="fr">
+<head>
+    <!--=============== basic  ===============-->
+    <meta charset="UTF-8">
+    <title>{% block title %}- AWA Partners{% endblock %}</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="robots" content="index, follow"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <!--=============== css  ===============-->
+    {% block css %}
+        {% stylesheets output="css/compiled/mainfrontcss.css" filter="cssrewrite"
+        'bundles/awapartners/frontAssets/css/reset.css'
+        'bundles/awapartners/frontAssets/css/plugins.css'
+        'bundles/awapartners/frontAssets/css/style.css' %}
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+        {% endstylesheets %}
+        <!--=============== favicons ===============-->
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    {% endblock %}
+</head>
+<body>
+<!-- loader -->
+<div class="loader">
+    <div id="movingBallG">
+        <div class="movingBallLineG"></div>
+        <div id="movingBallG_1" class="movingBallG"></div>
+    </div>
+</div>
+<!-- loader end -->
+<!--================= main start ================-->
+<div id="main">
+
+    {% block body %}
+        {% block footer %}
+            <!-- content footer-->
+            <div class="height-emulator"></div>
+            <footer class="content-footer">
+                <!--  container  -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- Footer logo -->
+                            <div class="footer-item footer-logo">
+                                <a href="{{ path('home') }}"><img src="{{ asset('logo.png') }}" alt=""></a>
+                                <p >L’éxcellence consiste à dépasser les attentes du client.
+                                    Nous essayons d’atteindre l’Excellence dans tous ce que nous faisons.
+                                </p>
+                            </div>
+                            <!-- Footer logo end -->
+                        </div>
+                        <!-- Footer info -->
+                        <div class="col-md-2">
+                            <div class="footer-item">
+                                <h4 class="text-link">Numéros</h4>
+                                <ul>
+                                    <li>Tél: (+216)71 965 291</li>
+                                    <li>Fax: (+216)71 965 378</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Footer info end-->
+                        <!-- Footer info -->
+                        <div class="col-md-2">
+                            <div class="footer-item">
+                                <h4 class="text-link">Email</h4>
+                                <ul>
+                                    <li>contact@awa.com.tn</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Footer info-->
+                        <!-- Footer info end-->
+                        <div class="col-md-2">
+                            <div class="footer-item">
+                                <h4 class="text-link">Adresse</h4>
+                                <ul>
+                                    <li><span>Angle rue Lac Toba et rue Lac Malaren,
+                                            Imm. Mezghanni Appt 3, Etg 2,
+                                            1053 les Berges du Lac
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Footer info end-->
+                    </div>
+                    <!-- Footer copyright -->
+                    <div class="row">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6">
+                            <div class="footer-wrap">
+                                        <span class="copyright">  &#169;  <script> document.write(new Date().getFullYear()); </script>
+                                             - <a style="color: #fff; border-color: #fff; border-bottom: solid 1px" target="_blank" href="http://www.sbc.tn">Smart Business Challenge</a>
+                                        </span>
+                                <span class="to-top">Allez en haut</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Footer copyright end -->
+                </div>
+                <!--  container  end -->
+                <!-- Hover animation  -->
+                <canvas class="particular"></canvas>
+                <!-- Hover animation  end -->
+            </footer>
+            <!-- content footer end -->
+
+        {% endblock %}
+    {% endblock %}
+    <!-- Fixed footer -->
+    <footer class="fixed-footer">
+        <div class="footer-social">
+            <ul>
+                <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                <li><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+        </div>
+        <!-- Header  title -->
+        <div class="footer-title">
+            <h2><a href="#" style="font-size: 12px"></a></h2>
+        </div>
+        <!-- Header  title  end-->
+    </footer>
+    <!-- Fixed footer end-->
+</div>
+<!-- Main end -->
+<!--=============== scripts  ===============-->
+{% block js %}
+    {% javascripts output="js/compiled/mainfrontjs.js"
+    'bundles/awapartners/frontAssets/js/jquery.min.js'
+    'bundles/awapartners/frontAssets/js/plugins.js'
+    'bundles/awapartners/frontAssets/js/scripts.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+</body>
+</html>
